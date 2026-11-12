@@ -532,3 +532,6 @@ h2 em { color: var(--accent); }
 .comm-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 @media (max-width: 1000px) { .posts { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 720px) { .posts { grid-template-columns: 1fr; } }
+
+/* 5 scorecards: last one spans the leftover cell */
+@media (min-width: 721px) { .score.wide { grid-column: span 2; } }
