@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ankit Yadav — AI Software Engineer</title>
+  <meta name="description" content="Ankit Yadav builds governed GenAI systems: provider-agnostic LLM gateways, multi-tenant RAG, LLM evals and privacy-first AI. Backend engineer at EZ Works, Gurugram." />
+  <meta property="og:title" content="Ankit Yadav — AI Software Engineer" />
+  <meta property="og:description" content="I build AI systems that are allowed to ship: grounded, evaluated, private by default." />
+  <meta property="og:image" content="assets/ankit.jpg" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230b0c0e'/><text x='50%' y='58%' text-anchor='middle' dominant-baseline='middle' font-family='monospace' font-size='30' font-weight='700' fill='%23c6f432'>ay</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Boot sequence -->
+  <div class="boot" id="boot" aria-hidden="true">
+    <pre id="bootLog"></pre>
+  </div>
+
+  <header class="nav" id="nav">
+    <a href="#top" class="logo" aria-label="Home"><span class="logo-mark">ay</span><span class="logo-text">ankit<span class="dim">.ai</span></span></a>
+    <nav class="nav-links">
+      <a href="#systems">Systems</a>
+      <a href="#trace">Experience</a>
+      <a href="#work">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#community">Community</a>
+      <a href="#ask">Ask</a>
+      <a href="#roles">Next</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="kbd-btn" id="openPalette" aria-label="Open command palette"><span>⌘</span>K</button>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <canvas id="embedSpace" aria-hidden="true"></canvas>
+      <div class="hero-inner">
+        <div class="status-pill"><span class="pulse"></span> Backend Engineer @ EZ Works · Gurugram · open to AI/backend roles</div>
+        <h1 class="hero-title">
+          <span class="line">I build AI systems</span>
+          <span class="line">that are <em class="serif">allowed</em> to ship.</span>
+        </h1>
+        <div class="stream-box" aria-live="polite">
+          <div class="stream-head mono"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span> <span class="dim">model: ankit-v2.1 · temperature 0 · grounded=true</span></div>
+          <p class="stream" id="heroStream"></p>
+          <div class="stream-meta mono"><span id="tokCount">0</span> tokens · <span id="tokRate">0</span> tok/s · hallucinations: <span class="ok">0</span></div>
+        </div>
+        <div class="hero-cta">
+          <a href="#systems" class="btn primary magnetic">See the systems <span>→</span></a>
+          <a href="#ask" class="btn ghost magnetic">Ask my portfolio <span class="mono dim">RAG</span></a>
+        </div>
+      </div>
+      <div class="hero-hint mono">move your cursor — it's a query vector. nearest neighbours light up.</div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track mono">
+        <span>FastAPI</span><span>✦</span><span>pgvector</span><span>✦</span><span>LLM Gateways</span><span>✦</span><span>RAG</span><span>✦</span><span>LLM-as-Judge</span><span>✦</span><span>PII Redaction</span><span>✦</span><span>Gemini</span><span>✦</span><span>OpenAI</span><span>✦</span><span>Django REST</span><span>✦</span><span>Celery + Redis</span><span>✦</span><span>PostgreSQL</span><span>✦</span><span>AWS</span><span>✦</span><span>GCP · Vertex AI</span><span>✦</span><span>LangGraph</span><span>✦</span><span>Docker</span><span>✦</span>
+        <span>FastAPI</span><span>✦</span><span>pgvector</span><span>✦</span><span>LLM Gateways</span><span>✦</span><span>RAG</span><span>✦</span><span>LLM-as-Judge</span><span>✦</span><span>PII Redaction</span><span>✦</span><span>Gemini</span><span>✦</span><span>OpenAI</span><span>✦</span><span>Django REST</span><span>✦</span><span>Celery + Redis</span><span>✦</span><span>PostgreSQL</span><span>✦</span><span>AWS</span><span>✦</span><span>GCP · Vertex AI</span><span>✦</span><span>LangGraph</span><span>✦</span><span>Docker</span><span>✦</span>
+      </div>
+    </div>
+
+    <!-- EVAL SCORECARD -->
+    <section class="section" id="impact">
+      <div class="section-head reveal">
+        <span class="eyebrow mono">00 / eval_results.json</span>
+        <h2>Impact, <em class="serif">measured</em> like a model.</h2>
+        <p class="lede">Every number below is from production work. No vibes, only evals.</p>
+      </div>
+      <div class="scorecard">
+        <article class="score reveal"><div class="score-top mono"><span class="tag pass">PASS</span> editorial_review_time</div><div class="score-num"><span class="count" data-to="80">0</span><span class="unit">% ↓</span></div><p>cut by an LLM eval framework: 14 deterministic checks + 8-dimension LLM-as-judge.</p><div class="bar"><i style="--w:80%"></i></div></article>
+        <article class="score reveal"><div class="score-top mono"><span class="tag pass">PASS</span> deck_cleanup_time</div><div class="score-num"><span class="count" data-to="95">0</span><span class="unit">% ↓</span></div><p>4 hours → 12 minutes per PowerPoint deck with LLM layout-fitting and font audits.</p><div class="bar"><i style="--w:95%"></i></div></article>
+        <article class="score reveal"><div class="score-top mono"><span class="tag pass">PASS</span> query_latency</div><div class="score-num"><span class="count" data-to="65">0</span><span class="unit">% ↓</span></div><p>PostgreSQL schema optimisation on an ERP handling 1,000+ daily transactions.</p><div class="bar"><i style="--w:65%"></i></div></article>
+        <article class="score reveal"><div class="score-top mono"><span class="tag pass">PASS</span> api_p50</div><div class="score-num"><span class="count" data-to="3.2" data-dec="1">0</span><span class="unit">s</span><span class="arrow">→</span><span class="count" data-to="0.8" data-dec="1">0</span><span class="unit">s</span></div><p>Celery + Redis task system scaled to 1,000+ concurrent background jobs.</p><div class="bar"><i style="--w:75%"></i></div></article>
+        <article class="score reveal"><div class="score-top mono"><span class="tag pass">PASS</span> rbac_endpoints</div><div class="score-num"><span class="count" data-to="150">0</span><span class="unit">+</span></div><p>API endpoints under role-based access control. Unauthorized-access incidents: zero.</p><div class="bar"><i style="--w:100%"></i></div></article>
+        <article class="score reveal"><div class="score-top mono"><span class="tag pass">PASS</span> lead_qualification</div><div class="score-num"><span class="count" data-to="42">0</span><span class="unit">%</span><span class="arrow">→</span><span class="count" data-to="89">0</span><span class="unit">%</span></div><p>accuracy after deploying OpenAI sentiment classification on prospect replies.</p><div class="bar"><i style="--w:89%"></i></div></article>
+      </div>
+    </section>
+
+    <!-- SYSTEMS / ARCHITECTURE -->
+    <section class="section" id="systems">
+      <div class="section-head reveal">
+        <span class="eyebrow mono">01 / architecture</span>
+        <h2>The flagship: a <em class="serif">governed</em> GenAI platform.</h2>
+        <p class="lede">Multi-tenant content generation where an LLM never gets to invent a fact or see a secret. Click any stage to inspect it.</p>
+      </div>
+
+      <div class="pipeline reveal" id="pipeline">
+        <svg class="pipe-svg" viewBox="0 0 1200 260" preserveAspectRatio="none" aria-hidden="true">
+          <path id="pipePath" d="M60 130 C 200 130, 220 130, 300 130 S 420 130, 500 130 S 620 130, 700 130 S 820 130, 900 130 S 1040 130, 1140 130" />
+        </svg>
+        <div class="stages">
+          <button class="stage" data-stage="0"><span class="stage-ico">◇</span><span class="stage-name">Brief</span><span class="stage-sub mono">chat → structured</span></button>
+          <button class="stage" data-stage="1"><span class="stage-ico">▦</span><span class="stage-name">PII Redaction</span><span class="stage-sub mono">tokenize · tier</span></button>
+          <button class="stage" data-stage="2"><span class="stage-ico">⌬</span><span class="stage-name">RAG</span><span class="stage-sub mono">pgvector top-k</span></button>
+          <button class="stage" data-stage="3"><span class="stage-ico">⇄</span><span class="stage-name">LLM Gateway</span><span class="stage-sub mono">route · meter</span></button>
+          <button class="stage" data-stage="4"><span class="stage-ico">⚿</span><span class="stage-name">Fact-Lock</span><span class="stage-sub mono">verified facts only</span></button>
+          <button class="stage" data-stage="5"><span class="stage-ico">✓</span><span class="stage-name">Evals</span><span class="stage-sub mono">BLOCK · FLAG · PASS</span></button>
+        </div>
+        <div class="stage-detail" id="stageDetail"></div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE TRACE -->
+    <section class="section" id="trace">
+      <div class="section-head reveal">
+        <span class="eyebrow mono">02 / career.trace</span>
+        <h2>Experience, rendered as a <em class="serif">trace</em>.</h2>
+        <p class="lede">Each span is a role. Expand one to see what it actually shipped.</p>
+      </div>
+
+      <div class="trace reveal">
+        <div class="trace-axis mono"><span></span><div class="axis-scale"><span style="left:0%">2022</span><span style="left:20%">2023</span><span style="left:40%">2024</span><span style="left:60%">2025</span><span style="left:80%">2026</span><span style="left:100%">now</span></div><span></span></div>
+
+        <details class="span" open>
+          <summary>
+            <div class="span-label"><b>EZ Works</b><span class="mono dim">Backend Engineer · AI platforms</span></div>
+            <div class="span-track"><i class="span-bar accent" style="--s:57%;--e:100%"></i></div>
+            <span class="span-time mono">Nov 2024 — now</span>
+          </summary>
+          <div class="span-body">
+            <p class="mono small dim">promoted Junior Backend Engineer → Backend Engineer (2026)</p>
+            <ul>
+              <li>Architected a <b>governed, multi-tenant GenAI content platform</b> (FastAPI, Gemini) on a <b>provider-agnostic LLM gateway</b>: model routing, cost metering, PII redaction, Fact-Lock grounding and confidentiality-tier routing.</li>
+              <li>Built a <b>multi-tenant RAG pipeline on pgvector</b>: PII-redacted chunking, Gemini embeddings, tenant/content-type/language filtered retrieval. The same embeddings power a 0–100 <b>brand-voice fidelity score</b> and semantic fact de-duplication.</li>
+              <li>Designed an <b>LLM evaluation framework</b>: 14 deterministic checks + LLM-as-judge rubric (8 dimensions, severity-gated BLOCK/FLAG verdicts) — <b>80% less manual editorial review</b>.</li>
+              <li>Shipped <b>bilingual EN/AR generation</b> from language-neutral briefs with a terminology and style-rule enforcement layer, plus a conversational brief-collection workflow (structured extraction, intent detection).</li>
+              <li>Engineered a <b>PowerPoint automation platform</b> with LLM layout-fitting and font auditing: <b>4 h → 12 min</b> per deck.</li>
+              <li>Architected <b>Django REST APIs for an ERP</b> (leave, attendance, payroll, invoicing; 1,000+ daily txns), 65% faster queries, RBAC across 150+ endpoints; Celery + Redis async system (3.2 s → 0.8 s); automated invoicing saving 8 h/week.</li>
+              <li>Built a <b>multi-channel outreach platform</b> with LinkedIn automation and OpenAI lead scoring: 500+ qualified leads/month, 80% of qualification automated.</li>
+            </ul>
+            <div class="chips mono"><span>FastAPI</span><span>Gemini</span><span>pgvector</span><span>Django REST</span><span>PostgreSQL</span><span>Celery</span><span>Redis</span><span>OpenAI</span><span>C# / VSTO</span></div>
+          </div>
+        </details>
+
+        <details class="span">
+          <summary>
+            <div class="span-label"><b>Bhramaand</b><span class="mono dim">Backend Developer Intern</span></div>
+            <div class="span-track"><i class="span-bar" style="--s:29%;--e:38%"></i></div>
+            <span class="span-time mono">Jun — Nov 2023</span>
+          </summary>
+          <div class="span-body">
+            <ul>
+              <li>Engineered an <b>asynchronous LinkedIn scraping and data pipeline</b> on AWS EC2/S3 — 10,000+ profile extractions a month, <b>97% less manual data collection</b>.</li>
+              <li>Integrated <b>Razorpay</b> for online payments with encryption for transaction safety.</li>
+            </ul>
+            <div class="chips mono"><span>Python</span><span>AWS EC2</span><span>S3</span><span>Razorpay</span></div>
+          </div>
+        </details>
+
+        <details class="span">
+          <summary>
+            <div class="span-label"><b>Cloud Native Gurugram</b><span class="mono dim">Founder &amp; Lead Organizer (CNCG)</span></div>
+            <div class="span-track"><i class="span-bar violet" style="--s:35%;--e:100%"></i></div>
+            <span class="span-time mono">Sep 2023 — now</span>
+          </summary>
+          <div class="span-body">
+            <ul>
+              <li>Co-founded the <b>CNCF community chapter in Gurugram</b>; directed <b>18+ monthly meetups</b>, workshops and speaker sessions on cloud-native tech.</li>
+              <li>Event planning, public speaking, inviting industry experts and building an inclusive space for developers, DevOps engineers and students.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="span">
+          <summary>
+            <div class="span-label"><b>Datapool Club, Sharda Univ.</b><span class="mono dim">Club Lead</span></div>
+            <div class="span-track"><i class="span-bar violet" style="--s:25%;--e:53%"></i></div>
+            <span class="span-time mono">Apr 2023 — Aug 2024</span>
+          </summary>
+          <div class="span-body"><ul><li>Mentored <b>100+ students</b> in data science through events, workshops and seminars.</li></ul></div>
+        </details>
+
+        <details class="span">
+          <summary>
+            <div class="span-label"><b>Kartavya NGO</b><span class="mono dim">Volunteer</span></div>
+            <div class="span-track"><i class="span-bar violet" style="--s:5%;--e:33%"></i></div>
+            <span class="span-time mono">Apr 2022 — Sep 2023</span>
+          </summary>
+          <div class="span-body"><ul><li>Ran <b>12+ technical workshops</b> for underprivileged students and mentored Class 12 students for JEE.</li></ul></div>
+        </details>
+      </div>
+    </section>
+
+    <!-- PROJECTS / MODEL CARDS -->
+    <section class="section" id="work">
+      <div class="section-head reveal">
+        <span class="eyebrow mono">03 / model_cards/</span>
+        <h2>Selected work, documented as <em class="serif">model cards</em>.</h2>
+      </div>
+
+      <div class="cards">
+        <article class="card tilt reveal featured">
+          <div class="card-top mono"><span class="tag live">BUILDING · 2026</span><span class="dim">card_01 · case study</span></div>
+          <h3>DevLens</h3>
+          <p class="card-sub">Privacy-first debugging assistant for engineering teams.</p>
+          <p>Teams connect Slack, GitHub, Jira, Google Drive and code folders, or import chat exports and logs. A deterministic <b>Privacy Gateway</b> (secret scanning, Presidio PII, name hashing) runs <b>before any content reaches an LLM</b>, and LangGraph orchestrates streamed root-cause reports where <b>every claim must quote its evidence and be judged to support it</b>.</p>
+          <div class="dl-grid">
+            <div class="dl-col">
+              <h4 class="mono">what_it_does</h4>
+              <ul>
+                <li>Cited chat over project knowledge, streamed over SSE</li>
+                <li>Root-cause debug reports with claim verification</li>
+                <li>Incident timelines → Markdown postmortems</li>
+                <li>Code awareness: answers cite file + line, linked to the commit</li>
+                <li>Weekly digests, “knowledge gaps” to import next</li>
+                <li>Insights: usage, cost, budgets, answer quality, eval runs</li>
+              </ul>
+            </div>
+            <div class="dl-col">
+              <h4 class="mono">how_it's_built</h4>
+              <ul>
+                <li>FastAPI + async SQLAlchemy, Alembic migrations</li>
+                <li>LangGraph workflow + Postgres checkpointer with retention</li>
+                <li>pgvector retrieval plus exact identifier matches, project-scoped in SQL</li>
+                <li>arq on Redis for syncs, digests, evals; Redis rate limiting</li>
+                <li>OAuth 2.0 “Connect with…” for 4 providers, encrypted refreshing tokens</li>
+                <li>Argon2, JWT + rotating refresh sessions, admin/member/viewer RBAC, audit log</li>
+              </ul>
+            </div>
+          </div>
+          <div class="chips mono"><span>FastAPI</span><span>LangGraph</span><span>LangChain</span><span>pgvector</span><span>Presidio</span><span>spaCy</span><span>Ollama</span><span>arq · Redis</span><span>OAuth 2.0</span><span>React · TypeScript · Vite</span><span>Docker</span></div>
+        </article>
+
+        <article class="card tilt reveal">
+          <div class="card-top mono"><span class="tag pass">PROD</span><span class="dim">card_02</span></div>
+          <h3>Governed GenAI Content Platform</h3>
+          <p class="card-sub">Multi-tenant, bilingual, fact-locked.</p>
+          <p>Provider-agnostic gateway with cost metering and confidentiality-tier routing. Facts come from a human-verified sheet — never from retrieved chunks.</p>
+          <dl class="card-meta mono">
+            <div><dt>eval</dt><dd>14 checks + 8-dim judge</dd></div>
+            <div><dt>languages</dt><dd>EN · AR</dd></div>
+            <div><dt>review_time</dt><dd class="ok">−80%</dd></div>
+          </dl>
+        </article>
+
+        <article class="card tilt reveal">
+          <div class="card-top mono"><span class="tag pass">PROD</span><span class="dim">card_03</span></div>
+          <h3>AI PowerPoint Automation Add-in</h3>
+          <p class="card-sub">C# · OpenAI GPT-4 · Office Interop · VSTO</p>
+          <p>Font auditing caught 2,000+ inconsistencies (100% compliance after remediation); a layout algorithm aligned 5,000+ shapes, 94% automatically; a 15-metric deck health score with 96% accuracy.</p>
+          <dl class="card-meta mono">
+            <div><dt>per_deck</dt><dd>4 h → 12 min</dd></div>
+            <div><dt>auto_align</dt><dd class="ok">94%</dd></div>
+          </dl>
+        </article>
+
+        <article class="card tilt reveal">
+          <div class="card-top mono"><span class="tag pass">SHIPPED</span><span class="dim">card_04</span></div>
+          <h3>LeadzMachine</h3>
+          <p class="card-sub">Python · Flask · AWS · OpenAI · Chrome Extension</p>
+          <p>Full-stack LinkedIn lead-generation system capturing 50,000+ profiles a month, with an OpenAI sentiment model classifying prospect replies.</p>
+          <dl class="card-meta mono">
+            <div><dt>qualification_acc</dt><dd>42% → <span class="ok">89%</span></dd></div>
+          </dl>
+        </article>
+
+        <article class="card tilt reveal">
+          <div class="card-top mono"><span class="tag pass">PROD</span><span class="dim">card_05</span></div>
+          <h3>ERP Platform APIs</h3>
+          <p class="card-sub">Django REST · PostgreSQL · Celery · LibreOffice</p>
+          <p>Leave, attendance, payroll and invoicing for 1,000+ daily transactions; RBAC on 150+ endpoints; automated invoice pipeline for 100+ invoices a month.</p>
+          <dl class="card-meta mono">
+            <div><dt>query_time</dt><dd class="ok">−65%</dd></div>
+            <div><dt>api_latency</dt><dd>3.2 s → 0.8 s</dd></div>
+          </dl>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section class="section" id="research">
+      <div class="section-head reveal">
+        <span class="eyebrow mono">03.5 / papers.bib</span>
+        <h2>Research &amp; <em class="serif">publications.</em></h2>
+        <p class="lede">Before LLMs, I was training CNNs to read skin. Click a paper to expand its abstract.</p>
+      </div>
+      <!-- Papers are rendered from the PAPERS array in main.js — add new ones there. -->
+      <div class="papers" id="papers"></div>
+    </section>
+
+    <!-- ASK MY PORTFOLIO -->
+    <section class="section" id="ask">
+      <div class="section-head reveal">
+        <span class="eyebrow mono">04 / rag.query()</span>
+        <h2>Don't read. <em class="serif">Ask.</em></h2>
+        <p class="lede">A tiny RAG system running entirely in your browser: retrieval over a verified fact sheet about me, cosine scores shown, and Fact-Lock refuses anything it can't ground. No API, no hallucinations.</p>
+      </div>
+
+      <div class="ask reveal">
+        <div class="ask-chat" id="askLog">
+          <div class="msg bot"><span class="who mono">ankit.ai</span><p>Ask me about Ankit's experience, LLM evals, RAG, the ERP work, community, education — anything. I'll only answer from verified facts.</p></div>
+        </div>
+        <div class="ask-suggest mono" id="askSuggest">
+          <button>How do you prevent hallucinations?</button>
+          <button>What's your RAG experience?</button>
+          <button>Tell me about the ERP system</button>
+          <button>What community work have you done?</button>
+          <button>What integrations have you built?</button>
+          <button>What roles are you looking for?</button>
+          <button>What's your favourite pizza?</button>
+        </div>
+        <form class="ask-input" id="askForm">
+          <span class="mono prompt">›</span>
+          <input id="askInput" autocomplete="off" placeholder="ask anything about Ankit…" aria-label="Ask a question" />
+          <button class="btn primary small" type="submit">Run</button>
+        </form>
+        <aside class="ask-retrieval mono" id="askRetrieval"><div class="dim">retrieved chunks will appear here · top_k=3</div></aside>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <div class="section-head reveal">
+        <span class="eyebrow mono">05 / skills --with-receipts</span>
+        <h2>Skills, each with a <em class="serif">receipt.</em></h2>
+        <p class="lede">No progress bars. Every skill links to where I've actually used it. Filter by area, or hover a skill to see the proof.</p>
+      </div>
+      <div class="skill-filters mono reveal" id="skillFilters" role="tablist"></div>
+      <div class="skill-cloud reveal" id="skillCloud"></div>
+      <div class="skill-proof mono" id="skillProof" aria-live="polite"><span class="dim">hover or tap a skill →</span></div>
+
+      <div class="integrations reveal">
+        <div class="int-head">
+          <h3>Integrations &amp; connectors I've shipped</h3>
+          <p class="dim">Third-party systems wired into production or DevLens: auth flows, sync engines, token refresh and all.</p>
+        </div>
+        <div class="int-grid" id="intGrid"></div>
+      </div>
+    </section>
+
+    <!-- COMMUNITY -->
+    <section class="section" id="community">
+      <div class="section-head reveal">
+        <span class="eyebrow mono">06 / community.log</span>
+        <h2>I don't just use cloud-native. <em class="serif">I host it.</em></h2>
+        <p class="lede">In 2023 I co-founded <b>Cloud Native Gurugram</b>, the city's official CNCF community group, and I've been a core organiser since. I plan events, bring in speakers and sponsors, host on stage, and keep a 1,200+ member community learning together.</p>
+      </div>
+      <div class="comm-stats">
+        <div class="cstat reveal"><span class="cnum"><span class="count" data-to="1269">0</span></span><span class="mono dim">community members</span></div>
+        <div class="cstat reveal"><span class="cnum"><span class="count" data-to="18">0</span>+</span><span class="mono dim">meetups &amp; workshops run</span></div>
+        <div class="cstat reveal"><span class="cnum"><span class="count" data-to="12">0</span></span><span class="mono dim">sponsors &amp; host partners</span></div>
+        <div class="cstat reveal"><span class="cnum">2023</span><span class="mono dim">co-founded the chapter</span></div>
+      </div>
+
+      <div class="comm-roles reveal">
+        <div><span class="mono ok">plan</span><p>Themes, agendas and run-of-show for each event, from 30-person mornings to full build days.</p></div>
+        <div><span class="mono ok">curate</span><p>Recruit speakers on Kubernetes, AI on K8s, security, FinOps and platform engineering.</p></div>
+        <div><span class="mono ok">partner</span><p>Venue and sponsor partnerships with companies like Google for Developers, ThoughtWorks and EPAM.</p></div>
+        <div><span class="mono ok">host</span><p>Emcee, moderate panels and open mics. It's how I got over my fear of public speaking.</p></div>
+      </div>
+
+      <div class="events-head reveal">
+        <h3>Events we've run</h3>
+        <div class="events-nav"><button class="btn ghost small" id="evPrev" aria-label="Previous events">←</button><button class="btn ghost small" id="evNext" aria-label="Next events">→</button></div>
+      </div>
+      <div class="events" id="events"></div>
+
+      <div class="partners reveal">
+        <span class="mono dim">sponsors &amp; hosts</span>
+        <div class="partner-list mono" id="partners"></div>
+      </div>
+      <div class="comm-cta reveal">
+        <a class="btn primary magnetic" href="https://community.cncf.io/cloud-native-gurgaon/" target="_blank" rel="noopener">Join Cloud Native Gurugram <span>↗</span></a>
+        <a class="btn ghost magnetic" href="#posts">Read my event recaps</a>
+      </div>
+    </section>
+
+    <!-- LINKEDIN POSTS -->
+    <section class="section" id="posts">
+      <div class="section-head reveal">
+        <span class="eyebrow mono">07 / feed --featured</span>
+        <h2>From my <em class="serif">LinkedIn.</em></h2>
+        <p class="lede">Recaps from the stage and behind the scenes at Cloud Native Gurugram.</p>
+      </div>
+      <div class="posts" id="postGrid"></div>
+      <div class="posts-cta reveal"><a class="btn ghost magnetic" href="https://www.linkedin.com/in/ankit-yadav2809/recent-activity/all/" target="_blank" rel="noopener">See all posts on LinkedIn ↗</a></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about">
+      <div class="about-photo reveal">
+        <div class="photo-frame">
+          <img src="assets/ankit.jpg" alt="Portrait of Ankit Yadav" loading="lazy" />
+          <div class="scan" aria-hidden="true"></div>
+          <div class="bbox mono" aria-hidden="true"><span>person · 0.99</span></div>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <span class="eyebrow mono">08 / about.md</span>
+        <h2>Calm, persistent, and <em class="serif">curious.</em></h2>
+        <p>I'm a backend and AI engineer in Gurugram. I design systems from scratch and turn rough ideas into things people actually use — lately, GenAI platforms where trust is a feature: grounded facts, evaluated outputs, private by default.</p>
+        <p>In school I was scared of public speaking. So I kept volunteering for the stage. In 2023 that turned into founding <b>Cloud Native Gurugram</b>, a CNCF community where I host meetups, invite speakers and help people get into cloud-native tech.</p>
+        <ul class="facts mono">
+          <li><span>edu</span>B.Tech CSE, Sharda University · CGPA 9.15/10 · 2021–25</li>
+          <li><span>cert</span>Google Cloud Big Data &amp; ML Fundamentals</li>
+          <li><span>papers</span>Published in Springer Nature &amp; AICCONF '24 (deep learning, CV)</li>
+          <li><span>open_to</span>Senior backend · AI engineer · DevRel</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ROLES -->
+    <section class="section" id="roles">
+      <div class="section-head reveal">
+        <span class="eyebrow mono">09 / roadmap.next()</span>
+        <h2>What I want to <em class="serif">build next.</em></h2>
+        <p class="lede">The roles where I'll do my best work, and what each team gets from me on day one.</p>
+      </div>
+      <div class="roles" id="roleGrid"></div>
+      <div class="principles reveal">
+        <h3 class="mono">operating_principles:</h3>
+        <ol>
+          <li><b>Trust is a feature.</b> If an AI output can't be verified, it doesn't ship.</li>
+          <li><b>Privacy before the prompt.</b> Redact deterministically, then call the model.</li>
+          <li><b>Evals over vibes.</b> Every model change gets measured against a fixed set.</li>
+          <li><b>Boring infrastructure, interesting product.</b> Postgres, Redis and queues done well.</li>
+          <li><b>Teach what you learn.</b> Every system I build becomes a talk, a post or a workshop.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="reveal">
+        <span class="eyebrow mono">10 / POST /hire</span>
+        <h2 class="contact-title">Let's build something<br /><em class="serif">worth trusting.</em></h2>
+        <div class="terminal">
+          <div class="term-head mono"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="dim">~/ankit — zsh</span></div>
+<pre class="mono"><span class="dim">$</span> curl -X POST https://ankit.ai/hire \
+    -d '{"role": "your team", "problem": "hard"}'
+
+<span class="ok">201 Created</span> — reply within 24h ✓</pre>
+        </div>
+        <div class="contact-links">
+          <button class="btn primary magnetic" id="copyEmail" data-email="ankity19072003@gmail.com">ankity19072003@gmail.com <span class="mono small" id="copyLabel">copy</span></button>
+          <a class="btn ghost magnetic" href="https://www.linkedin.com/in/ankit-yadav2809" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="btn ghost magnetic" href="https://github.com/AnkitYadav2809" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="btn ghost magnetic" href="mailto:ankity19072003@gmail.com">Email ↗</a>
+          <a class="btn ghost magnetic" href="assets/Ankit_Yadav_Resume.pdf" target="_blank" rel="noopener">Résumé ↓</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer mono">
+    <span>© <span id="year"></span> Ankit Yadav</span>
+    <span class="dim">hand-built · no frameworks · press <kbd>⌘K</kbd> · try <kbd>sudo hire ankit</kbd></span>
+  </footer>
+
+  <!-- Command palette -->
+  <div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
+    <div class="palette-box">
+      <input id="paletteInput" class="mono" placeholder="type a command or section…" autocomplete="off" />
+      <ul id="paletteList"></ul>
+      <div class="palette-foot mono dim">↑↓ navigate · ↵ run · esc close</div>
+    </div>
+  </div>
+  <div class="toast mono" id="toast"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>
