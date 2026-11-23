@@ -13,14 +13,26 @@ python3 -m http.server 8000   # open http://localhost:8000
 - **Netlify / Vercel:** drag-and-drop the folder, or import the repo. No build command, publish directory `/`.
 
 ## Editing content
+Almost everything is data at the top of `main.js`:
+
 | What | Where |
 |---|---|
-| Research papers (add your other 2 here) | `PAPERS` array at the top of `main.js` |
-| "Ask my portfolio" answers | `KB` array in `main.js`, one verified fact per entry. Put retrieval keywords in `extra` |
-| Architecture stages | `STAGES` array in `main.js` |
-| Metrics, experience, projects | `index.html` |
-| Colors / fonts | CSS variables at the top of `styles.css` |
-| Photo / résumé | `assets/ankit.jpg`, `assets/Ankit_Yadav_Resume.pdf` |
+| Experience timeline (headline + one line per point) | `EXPERIENCE` |
+| Architecture stages (played in order) | `STAGES` |
+| DevLens features and stack · other project cards | `DEVLENS_FEATURES`, `DEVLENS_STACK`, `PROJECTS` |
+| Research papers (page previews) | `PAPERS` |
+| Skill rows (each row slides the opposite way) | `SKILL_ROWS` |
+| Integrations | `INTEGRATIONS` |
+| Events (photos crossfade when an event has several) | `EVENTS`, photos in `assets/events/` |
+| Sponsors | `PARTNERS`, logos in `assets/sponsors/` |
+| Roles carousel | `ROLES` |
+| "Ask my portfolio" answers | `KB`, one verified fact per entry; retrieval keywords in `extra` |
+| Impact numbers, section headings | `index.html` |
+| Colors (ink, bone, one neon) | `:root` at the top of `styles.css` |
+
+**Logos:** single-color SVGs in `assets/logos/<slug>.svg` (Simple Icons, CC0). To use a new one, add the file and its slug to `LOGOS` in `main.js`; anything without a logo falls back to a line icon from `GLYPHS`.
+**Numbers glow neon automatically** in timeline, project and role text (the `hl()` helper); in `index.html`, wrap a number in `<span class="n">`.
+`assets/manifest.json` records where every logo and image came from.
 
 The résumé PDF includes your phone number. Replace it with a version without the number if you don't want that public.
 

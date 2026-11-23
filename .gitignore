@@ -1,3 +1,6 @@
 .DS_Store
 _test.html
 *.log
+
+# Personal documents kept out of the public site (the résumé the site links to is assets/Ankit_Yadav_Resume.pdf)
+/*.pdf

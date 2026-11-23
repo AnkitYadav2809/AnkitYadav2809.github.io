@@ -1,0 +1,297 @@
+{
+  "logos": {
+    "aws": "assets/logos/aws.svg",
+    "celery": "assets/logos/celery.svg",
+    "cloudflare": "assets/logos/cloudflare.svg",
+    "cncf": "assets/logos/cncf.svg",
+    "csharp": "assets/logos/csharp.svg",
+    "discord": "assets/logos/discord.svg",
+    "django": "assets/logos/django.svg",
+    "docker": "assets/logos/docker.svg",
+    "fastapi": "assets/logos/fastapi.svg",
+    "flask": "assets/logos/flask.svg",
+    "gemini": "assets/logos/gemini.svg",
+    "git": "assets/logos/git.svg",
+    "github": "assets/logos/github.svg",
+    "gmail": "assets/logos/gmail.svg",
+    "googlecloud": "assets/logos/googlecloud.svg",
+    "googledrive": "assets/logos/googledrive.svg",
+    "html5": "assets/logos/html5.svg",
+    "huggingface": "assets/logos/huggingface.svg",
+    "javascript": "assets/logos/javascript.svg",
+    "jira": "assets/logos/jira.svg",
+    "jwt": "assets/logos/jwt.svg",
+    "kubernetes": "assets/logos/kubernetes.svg",
+    "langchain": "assets/logos/langchain.svg",
+    "langgraph": "assets/logos/langgraph.svg",
+    "linkedin": "assets/logos/linkedin.svg",
+    "linux": "assets/logos/linux.svg",
+    "microsoft": "assets/logos/microsoft.svg",
+    "mongodb": "assets/logos/mongodb.svg",
+    "mysql": "assets/logos/mysql.svg",
+    "newrelic": "assets/logos/newrelic.svg",
+    "nginx": "assets/logos/nginx.svg",
+    "ollama": "assets/logos/ollama.svg",
+    "openai": "assets/logos/openai.svg",
+    "postgresql": "assets/logos/postgresql.svg",
+    "powerpoint": "assets/logos/powerpoint.svg",
+    "pydantic": "assets/logos/pydantic.svg",
+    "python": "assets/logos/python.svg",
+    "razorpay": "assets/logos/razorpay.svg",
+    "react": "assets/logos/react.svg",
+    "redis": "assets/logos/redis.svg",
+    "slack": "assets/logos/slack.svg",
+    "spacy": "assets/logos/spacy.svg",
+    "sqlalchemy": "assets/logos/sqlalchemy.svg",
+    "telegram": "assets/logos/telegram.svg",
+    "typescript": "assets/logos/typescript.svg",
+    "vite": "assets/logos/vite.svg",
+    "whatsapp": "assets/logos/whatsapp.svg"
+  },
+  "logos_missing": [],
+  "sponsors": [
+    {
+      "name": "Google for Developers",
+      "file": "assets/sponsors/google-for-developers.svg",
+      "url": "https://developers.google.com/",
+      "kind": "wordmark",
+      "on_dark": false,
+      "alt_on_dark": "assets/sponsors/google-for-developers-on-dark.svg",
+      "note": "Official lockup from developers.google.com header; \"for Developers\" is grey #5f6368. The on-dark variant only recolours that grey text to #e8eaed."
+    },
+    {
+      "name": "Thoughtworks",
+      "file": "assets/sponsors/thoughtworks.svg",
+      "url": "https://www.thoughtworks.com/en-in",
+      "kind": "wordmark",
+      "on_dark": false,
+      "alt_on_dark": "assets/sponsors/thoughtworks-on-dark.svg",
+      "note": "Official header SVG (dark teal text and pink slash). The on-dark variant recolours the teal to white."
+    },
+    {
+      "name": "EPAM Systems",
+      "file": "assets/sponsors/epam.svg",
+      "url": "https://www.epam.com/",
+      "kind": "wordmark",
+      "on_dark": true,
+      "alt_on_light": "assets/sponsors/epam-on-light.svg",
+      "note": "Official epam.com SVGs, retrieved via the Wayback Machine because epam.com sits behind a Cloudflare challenge. epam.svg is white; epam-on-light.svg is black."
+    },
+    {
+      "name": "Devtron",
+      "file": "assets/sponsors/devtron.svg",
+      "url": "https://devtron.ai/",
+      "kind": "wordmark",
+      "on_dark": true,
+      "note": "Header logo from devtron.ai; it is white/near-white and unreadable on light backgrounds."
+    },
+    {
+      "name": "Loft Labs",
+      "file": "assets/sponsors/loft-labs.svg",
+      "url": "https://www.loft.sh/",
+      "kind": "wordmark",
+      "on_dark": true,
+      "note": "Original Loft wordmark (#00BCFF) taken from the Feb 2024 archive of loft.sh. Loft Labs has since rebranded to vCluster Labs and loft.sh now redirects to vcluster.com."
+    },
+    {
+      "name": "Opstree Solutions",
+      "file": "assets/sponsors/opstree.png",
+      "url": "https://opstree.com/",
+      "kind": "wordmark",
+      "on_dark": true,
+      "alt_on_light": "assets/sponsors/opstree-on-light.png",
+      "note": "Official PNGs from opstree.com, small at 244x48."
+    },
+    {
+      "name": "BuildPiper",
+      "file": "assets/sponsors/buildpiper.png",
+      "url": "https://www.buildpiper.io/",
+      "kind": "wordmark",
+      "on_dark": false,
+      "note": "Official PNG from buildpiper.io, 450x66. The wordmark text is dark grey and the icon is colour."
+    },
+    {
+      "name": "Masters' Union",
+      "file": "assets/sponsors/masters-union.png",
+      "url": "https://mastersunion.org/",
+      "kind": "wordmark",
+      "on_dark": true,
+      "note": "Taken from the official social-share logo (cdn.mastersunion.link): cropped and converted from white-on-black to white on transparent. Needs inverting for light backgrounds."
+    },
+    {
+      "name": "Orangewood",
+      "file": "assets/sponsors/orangewood.png",
+      "url": "https://www.orangewood.co",
+      "kind": "wordmark",
+      "on_dark": true,
+      "note": "Official logo-white.png from orangewood.co, downscaled to 800px wide. White text with an orange dot."
+    },
+    {
+      "name": "certdirectory.io",
+      "file": "assets/sponsors/certdirectory.svg",
+      "url": "https://certdirectory.io/",
+      "kind": "icon",
+      "on_dark": true,
+      "note": "Only the brand mark (blue tile with a white C), rebuilt from the inline header SVG with its CSS variables resolved to #2150d1 and #fff. On the site the \"CertDirectory\" name is HTML text, not part of the logo."
+    },
+    {
+      "name": "Tirith (by StackGuardian)",
+      "file": "assets/sponsors/tirith.svg",
+      "url": "https://www.stackguardian.io/",
+      "kind": "icon",
+      "on_dark": true,
+      "note": "Tirith is StackGuardian's open-source policy-as-code engine; the community page links this sponsor to stackguardian.io. This is the official Tirith mark from stackguardian.io (#fafaf9), icon only, unreadable on light backgrounds."
+    },
+    {
+      "name": "TMS (The Monika Rajput Stack podcast)",
+      "file": "assets/sponsors/tms.png",
+      "url": "https://www.youtube.com/@mounikarajput",
+      "kind": "icon",
+      "on_dark": true,
+      "note": "TMS is the podcast run by CNCF Gurugram organiser Monika Rajput; the community page links it to youtube.com/@mounikarajput. The logo comes from the old CNCF Bevy event page upload (Cloudinary tms_cKVbwwf.png). It sits on an opaque white square, so on dark it shows as a white tile. 460px."
+    }
+  ],
+  "sponsors_missing": [],
+  "events": [
+    {
+      "title": "#cTENcf Birthday Bash Gurugram",
+      "file": "assets/events/ctencf-birthday-bash.webp",
+      "source": "https://ocgroups.dev/cncf/group/atcn6qw/event/c3q5q5m",
+      "kind": "banner",
+      "date": "2025-08-30",
+      "origin": "https://community.cncf.io/events/details/cncf-cloud-native-gurugram-presents-ctencf-birthday-bash-gurugram/"
+    },
+    {
+      "title": "Infra in the Cloud",
+      "file": "assets/events/infra-in-the-cloud.webp",
+      "source": "https://ocgroups.dev/cncf/group/atcn6qw/event/2xeebtc",
+      "kind": "banner",
+      "date": "2025-06-07",
+      "origin": "https://community.cncf.io/events/details/cncf-cloud-native-gurugram-presents-infra-in-the-cloud/",
+      "note": "event poster (portrait 720x900)"
+    },
+    {
+      "title": "Cloud Native Mixer",
+      "file": "assets/events/cloud-native-mixer.webp",
+      "source": "https://ocgroups.dev/cncf/group/atcn6qw/event/7pywb78",
+      "kind": "banner",
+      "date": "2025-03-22",
+      "origin": "https://community.cncf.io/events/details/cncf-cloud-native-gurugram-presents-cloud-native-mixer/"
+    },
+    {
+      "title": "Jingle & Cloud Fest",
+      "file": "assets/events/jingle-and-cloud-fest.webp",
+      "source": "https://ocgroups.dev/cncf/group/atcn6qw/event/nmj3wpf",
+      "kind": "banner",
+      "date": "2024-12-21",
+      "origin": "https://community.cncf.io/events/details/cncf-cloud-native-gurugram-presents-jingle-amp-cloud-fest/"
+    },
+    {
+      "title": "Code & Cake: CNCG Gurugram Birthday Bash",
+      "file": "assets/events/code-and-cake.webp",
+      "source": "https://ocgroups.dev/cncf/group/atcn6qw/event/cwhc5v7",
+      "kind": "banner",
+      "date": "2024-10-26",
+      "origin": "https://community.cncf.io/events/details/cncf-cloud-native-gurugram-presents-code-amp-cake-cncg-gurugram-birthday-bash/",
+      "note": "event poster (portrait 720x900)"
+    },
+    {
+      "title": "Sustainable Hacktober",
+      "file": "assets/events/sustainable-hacktober.webp",
+      "source": "https://ocgroups.dev/cncf/group/atcn6qw/event/8hk7rx9",
+      "kind": "banner",
+      "date": "2024-10-05",
+      "origin": "https://community.cncf.io/events/details/cncf-cloud-native-gurugram-presents-sustainable-hacktober/"
+    },
+    {
+      "title": "Phippy & Friends Tech Meetup",
+      "file": "assets/events/phippy-and-friends.webp",
+      "source": "https://ocgroups.dev/cncf/group/atcn6qw/event/kd3sjj6",
+      "kind": "photo",
+      "date": "2024-07-27",
+      "origin": "https://community.cncf.io/events/details/cncf-cloud-native-gurugram-presents-phippy-amp-friends-tech-meetup/",
+      "note": "real group photo of organisers with Phippy plushies and title overlay (900x900)"
+    },
+    {
+      "title": "CloudAI ProMeetup",
+      "file": "assets/events/cloudai-promeetup.webp",
+      "source": "https://ocgroups.dev/cncf/group/atcn6qw/event/wf5fcnb",
+      "kind": "banner",
+      "date": "2024-06-01",
+      "origin": "https://community.cncf.io/events/details/cncf-cloud-native-gurugram-presents-cloudai-promeetup-1/"
+    },
+    {
+      "title": "Kloud Konnect",
+      "file": "assets/events/kloud-konnect.webp",
+      "source": "https://ocgroups.dev/cncf/group/atcn6qw/event/sb4fykk",
+      "kind": "banner",
+      "date": "2024-02-24",
+      "origin": "https://community.cncf.io/events/details/cncf-cloud-native-gurugram-presents-kloud-konnect/",
+      "note": "event poster (portrait 720x900); OCG page also has a 13-photo gallery that could not be downloaded"
+    }
+  ],
+  "events_missing": [
+    {
+      "title": "Kube8s AI Connect: The Build Day",
+      "source": "https://ocgroups.dev/cncf/group/atcn6qw/event/shmatck",
+      "reason": "event banner exists on OCG (/images/33769825ce6ef48e320fdb8a8756704cb77500c020f515b8e617d276c82e99f9.png) but ocgroups.dev refuses non-same-origin image requests (403)"
+    },
+    {
+      "title": "Cloud Native AI Night: Pre-KCD Gujarat Meetup",
+      "source": "https://ocgroups.dev/cncf/group/atcn6qw/event/t8kajsc",
+      "reason": "event banner exists on OCG (/images/76a2c94d4417a813a9ae12c58792cb5970aaf92b259739889352d018c7947a7d.png) but hotlink-protected (403)"
+    },
+    {
+      "title": "Agentic Mornings",
+      "source": "https://ocgroups.dev/cncf/group/atcn6qw/event/45fb67b",
+      "reason": "no event-specific banner or photos (uses group default)"
+    },
+    {
+      "title": "Cloud-Native AI on K8s: Build, Ship, Scale",
+      "source": "https://ocgroups.dev/cncf/group/atcn6qw/event/sgktejq",
+      "reason": "only a 1-photo OCG gallery (/images/c0c052951b1c9f49e8b1f98c9d0461863defb9a67d072e8d712a6b1e0b3f540f.jpeg), hotlink-protected (403); old Bevy page used default banner"
+    },
+    {
+      "title": "Girls of Gurgaon",
+      "source": "https://ocgroups.dev/cncf/group/atcn6qw/event/e2fjjpm",
+      "reason": "no event-specific banner or photos (default banner on both OCG and old Bevy page)"
+    }
+  ],
+  "ieee_paper": {
+    "title": "Machine Learning-Based Image Analysis for Cotton Crop Health: A Comparative Study",
+    "venue": "2025 2nd International Conference On Multidisciplinary Research and Innovations in Engineering (MRIE)",
+    "venue_location": "Gurugram, India",
+    "date": "2025-07-30",
+    "conference_dates": "2025-07-30 to 2025-07-31",
+    "doi": "10.1109/MRIE66930.2025.11156686",
+    "url": "https://ieeexplore.ieee.org/document/11156686",
+    "pages": "85-91",
+    "publisher": "IEEE",
+    "authors": [
+      "Ankit Yadav",
+      "Vinay Sharma",
+      "Aanchal Vij",
+      "Jitendra Singh",
+      "Amit Chaudhary"
+    ],
+    "abstract": "Cotton is one of India's major cash crops, contributing significantly to the agricultural economy and supporting millions of farmers. However, cotton crops are highly susceptible to various diseases and pests, which adversely impact yield and quality. This research evaluates multiple deep learning models, including Inception V3, VGG-16, ResNet 50, VGG-19, and EfficientNetV2-L, for cotton disease classification and pest identification. The study employs data augmentation techniques to address class imbalance and enhance model performance. The Inception V3 model demonstrated the highest accuracy, achieving 98.83% for disease classification and 98.72% for pest identification, followed closely by VGG-16 and VGG-19, while ResNet 50 and EfficientNetV2-L underperformed in comparison. These findings underscore the efficacy of deep learning in smart agriculture and provide insights into optimal model selection for real-world applications. The results highlight the potential of AI-driven solutions in improving cotton crop management, leading to higher yields and sustainable farming practices.",
+    "keywords": [
+      "plant disease detection",
+      "deep learning model comparison",
+      "InceptionV3",
+      "VGG16",
+      "VGG19",
+      "ResNet50",
+      "data augmentation",
+      "class imbalance",
+      "smart agriculture",
+      "crop management"
+    ],
+    "keywords_source": "OpenAlex (auto-extracted, not IEEE-assigned; IEEE Xplore page was bot-blocked)",
+    "abstract_source": "Semantic Scholar + OpenAlex (identical text)"
+  },
+  "notes": {
+    "logos": "Simple Icons (CC0), latest from jsDelivr; all 24x24 viewBox, single path, no fill attr (black default) - mask-image ready. aws=amazonaws icon, gemini=googlegemini, jwt=jsonwebtokens, powerpoint=microsoftpowerpoint.",
+    "events": "All resized to fit 900x900, WebP q82, each < 80KB. source = current Open Community Groups event page (community.cncf.io redirects there); origin = archived Bevy page the image came from (images on res.cloudinary.com/startup-grind)."
+  }
+}
