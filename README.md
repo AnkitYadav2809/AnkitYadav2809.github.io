@@ -8,6 +8,13 @@ cd ~/Downloads/ankit-portfolio
 python3 -m http.server 8000   # open http://localhost:8000
 ```
 
+## Publishing an update
+Browsers cache `styles.css`, `main.js` and `walkthrough.js`. When you change any of them, bump the `?v=` number on their tags in `index.html` (any new value works, e.g. today's date and time) so visitors get the new version on a normal reload:
+
+```bash
+sed -i -E "s/\?v=[0-9]+/?v=$(date +%Y%m%d%H%M)/g" index.html
+```
+
 ## Deploy (free)
 - **GitHub Pages:** push this folder to a repo named `AnkitYadav2809.github.io` and it goes live at https://ankityadav2809.github.io
 - **Netlify / Vercel:** drag-and-drop the folder, or import the repo. No build command, publish directory `/`.
