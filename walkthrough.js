@@ -367,4 +367,5 @@ meter.complete(reservation, draft.usage)`),
   addEventListener("hashchange", fromHash);
   fromHash();
   window.AY.walkthroughs = Object.keys(WALKTHROUGHS);
+  window.AY.walkthroughData = WALKTHROUGHS; // rag.js answers from the slides too
 })();

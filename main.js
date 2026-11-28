@@ -757,7 +757,7 @@ verdict = gate(checks, rubric)
       </article>`), { speed: 30 });
   }
 
-  // The verified fact sheet the "Ask" box retrieves from. Every answer is one of these.
+  // The curated fact sheet: one of the sources rag.js answers from, next to the rest of the page's data.
   const KB = [
     { id: "role", title: "current_role", text: "Ankit Yadav is a Backend Engineer at EZ Works in Gurugram, India. He joined in November 2024 as a Backend Intern and was promoted to Junior Backend Engineer, then to Backend Engineer. He works on AI platforms, GenAI, LLM systems, Python, FastAPI and Django.", extra: "who is ankit job current work company position title" },
     { id: "genai", title: "genai_platform", text: "He architected a governed, multi-tenant GenAI content platform on FastAPI and Gemini, built on a provider-agnostic LLM gateway that handles model routing, cost metering, PII redaction, Fact-Lock grounding and confidentiality-tier routing across tenants.", extra: "llm gateway architecture platform multi tenant openai vertex providers routing cost" },
@@ -782,92 +782,6 @@ verdict = gate(checks, rubric)
     { id: "goals", title: "career_goals", text: "He is looking for AI/LLM engineer and senior backend engineer roles, and is also strongly interested in developer relations and founding/platform engineering roles where backend, AI and community overlap.", extra: "goals roles looking want next career future aspire become devrel" },
     { id: "person", title: "about", text: "Colleagues rely on his calm approach and persistence. He overcame a fear of public speaking by repeatedly volunteering for the stage, which led him to start a tech community.", extra: "personality who is he strengths soft skills calm character" },
   ];
-
-
-  /* ---------------------------------------------------------------- tiny in-browser RAG */
-  const STOP = new Set("a an the is are was were be been of to in on for and or with by at as from it its this that what which who whom how do does did you your yours he his him i me my about can could would should tell give show any have has had there their they them we our us so than then also into over under more most very just not no yes all work works worked working done doing did use used".split(" "));
-  const SYN = { hallucinate: "hallucination", hallucinations: "hallucination", grounding: "grounded", eval: "evaluation", evals: "evaluation", evaluate: "evaluation", vector: "embeddings", embedding: "embeddings", llms: "llm", models: "model", papers: "paper", publications: "publication", published: "publication", skill: "skills", tech: "stack", hire: "contact", email: "contact", reach: "contact", college: "university", degree: "education", speaking: "speaking", meetups: "meetup", ppt: "powerpoint", slides: "powerpoint", latency: "performance", fast: "performance", speed: "performance", secure: "security", privacy: "pii", redact: "pii", redaction: "pii" };
-  const norm = (w) => { w = w.toLowerCase().replace(/[^a-z0-9+#/-]/g, ""); w = SYN[w] || w; if (w.length > 4 && w.endsWith("s") && !w.endsWith("ss")) w = w.slice(0, -1); return w; };
-  const tokenize = (s) => s.split(/[\s,.;:()'"!?–—]+/).map(norm).filter((w) => w.length > 1 && !STOP.has(w));
-  let IDF, VECS;
-  function buildIndex() {
-    const docs = KB.map((d) => tokenize(`${d.title.replace(/_/g, " ")} ${d.text} ${d.extra} ${d.extra}`));
-    const df = new Map();
-    docs.forEach((ts) => new Set(ts).forEach((t) => df.set(t, (df.get(t) || 0) + 1)));
-    IDF = new Map([...df].map(([t, n]) => [t, Math.log(1 + KB.length / n)]));
-    VECS = docs.map(vec);
-  }
-  function vec(tokens) {
-    const tf = new Map();
-    tokens.forEach((t) => tf.set(t, (tf.get(t) || 0) + 1));
-    const v = new Map();
-    let n = 0;
-    tf.forEach((c, t) => { const w = (1 + Math.log(c)) * (IDF.get(t) || 0); if (w) { v.set(t, w); n += w * w; } });
-    n = Math.sqrt(n) || 1;
-    v.forEach((w, t) => v.set(t, w / n));
-    return v;
-  }
-  const cosine = (a, b) => { let s = 0; a.forEach((w, t) => { if (b.has(t)) s += w * b.get(t); }); return s; };
-
-  function ask() {
-    buildIndex();
-    const log = $("#askLog"), form = $("#askForm"), input = $("#askInput"), ret = $("#askRetrieval");
-    let busy = false;
-    const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-
-    async function run(q) {
-      if (busy || !q.trim()) return;
-      busy = true;
-      log.insertAdjacentHTML("beforeend", `<div class="msg user"><span class="who mono">you</span><p>${esc(q)}</p></div>`);
-      const qv = vec(tokenize(q));
-      const ranked = KB.map((d, i) => ({ d, s: cosine(qv, VECS[i]) })).sort((a, b) => b.s - a.s).slice(0, 3);
-
-      ret.innerHTML = `<div class="ret-title"><span>retrieved · top_k=3</span><span>cosine</span></div>` + ranked.map((r, i) => `
-        <div class="chunk" style="animation-delay:${i * 90}ms">
-          <div class="chunk-head"><b>[${i + 1}] ${r.d.title}</b><span>${r.s.toFixed(3)}</span></div>
-          <p>${r.d.text}</p>
-          <div class="sim"><i data-w="${Math.min(100, r.s * 160)}"></i></div>
-        </div>`).join("");
-      requestAnimationFrame(() => $$(".sim i", ret).forEach((i) => (i.style.width = i.dataset.w + "%")));
-
-      const bot = document.createElement("div");
-      bot.className = "msg bot";
-      bot.innerHTML = `<span class="who mono">ankit.ai · thinking…</span><p></p>`;
-      log.append(bot);
-      log.scrollTop = log.scrollHeight;
-      await sleep(reduced ? 0 : 550);
-
-      const top = ranked[0];
-      const p = $("p", bot);
-      if (!top || top.s < 0.12) {
-        bot.querySelector(".who").textContent = "ankit.ai · fact-lock";
-        p.innerHTML = `I can't ground that in Ankit's verified fact sheet, so I won't guess. Try asking about his AI platforms, RAG, evals, ERP work, research or community — or <a class="ok" href="mailto:${EMAIL}">ask him directly</a>.`;
-        bot.insertAdjacentHTML("beforeend", `<div class="verdict"><span class="tag block">BLOCK</span> no supporting fact · score ${top ? top.s.toFixed(2) : "0.00"} &lt; 0.12</div>`);
-      } else {
-        bot.querySelector(".who").textContent = "ankit.ai";
-        const use = ranked.filter((r, i) => i === 0 || r.s > top.s * 0.7 && r.s > 0.15).slice(0, 2);
-        for (const [ci, r] of use.entries()) {
-          const words = r.d.text.split(" ");
-          for (const w of words) {
-            // Numbers in answers glow, like everywhere else on the page.
-            if (/\d/.test(w)) { const s = document.createElement("span"); s.className = "n"; s.textContent = w; p.append(s, document.createTextNode(" ")); }
-            else p.append(document.createTextNode(w + " "));
-            if (!reduced) await sleep(18);
-            log.scrollTop = log.scrollHeight;
-          }
-          const c = document.createElement("span");
-          c.className = "cite";
-          c.textContent = `[${ranked.indexOf(r) + 1}]`;
-          p.append(c, document.createTextNode(ci < use.length - 1 ? " " : ""));
-        }
-        bot.insertAdjacentHTML("beforeend", `<div class="verdict"><span class="tag pass">PASS</span> grounded in ${use.length} verified fact${use.length > 1 ? "s" : ""} · 0 unsupported claims</div>`);
-      }
-      log.scrollTop = log.scrollHeight;
-      busy = false;
-    }
-    form.addEventListener("submit", (e) => { e.preventDefault(); const q = input.value; input.value = ""; run(q); });
-    $$("#askSuggest button").forEach((b) => b.addEventListener("click", () => run(b.textContent)));
-  }
 
   /* ---------------------------------------------------------------- command palette */
   function palette() {
@@ -996,13 +910,16 @@ verdict = gate(checks, rubric)
   }
 
   /* ---------------------------------------------------------------- init */
-  window.AY = { $, $$, icon, glyph, hl, reduced };
+  // The page's data is shared with rag.js, which builds the "Ask my portfolio" knowledge base from it.
+  window.AY = {
+    $, $$, icon, glyph, hl, reduced,
+    data: { EMAIL, KB, EXPERIENCE, PROJECTS, DEVLENS_FEATURES, DEVLENS_STACK, STAGES, PAPERS, SKILL_ROWS, INTEGRATIONS, EVENTS, PARTNERS, ROLES },
+  };
   // Render first, so reveals observe everything.
   stackMarquee(); timeline(); projects(); papers(); skills(); community(); roles();
   reveals();
   embeddingSpace();
   pipeline();
-  ask();
   palette();
   micro();
   runBoot().then(() => {

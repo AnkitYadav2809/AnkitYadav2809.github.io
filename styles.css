@@ -330,7 +330,7 @@ h2 em { color: var(--neon); }
 .chips span { font-family: var(--mono); font-size: 11px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line-2); color: var(--dim); }
 
 /* ---------- ask ---------- */
-.ask { display: grid; grid-template-columns: 1.4fr 1fr; grid-template-rows: 1fr auto auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-2); overflow: hidden; }
+.ask { display: grid; grid-template-columns: 1.4fr 1fr; grid-template-rows: 1fr auto auto auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-2); overflow: hidden; }
 .ask-chat { grid-column: 1; padding: 24px; height: 380px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; scroll-behavior: smooth; }
 .msg { max-width: 92%; }
 .msg .who { font-size: 11px; color: var(--dim); display: block; margin-bottom: 4px; }
@@ -355,6 +355,13 @@ h2 em { color: var(--neon); }
 .sim { height: 3px; background: var(--line); border-radius: 3px; margin-top: 10px; overflow: hidden; }
 .sim i { display: block; height: 100%; background: var(--neon); width: 0; transition: width 0.8s var(--ease); }
 .ret-title { color: var(--dim); display: flex; justify-content: space-between; }
+.chunk-meta { display: flex; justify-content: space-between; gap: 8px; margin-top: 8px; color: var(--dim); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; }
+a.cite:hover { text-decoration: underline; }
+/* Which search is active: keyword until the semantic model has loaded. */
+.ask-mode { grid-column: 1 / -1; padding: 8px 24px; border-top: 1px solid var(--line); font-size: 11px; color: var(--dim); display: flex; align-items: center; gap: 8px; }
+.ask-mode::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--line-2); flex: none; }
+.ask-mode[data-mode="loading"]::before { background: var(--neon); animation: blink 1s steps(2) infinite; }
+.ask-mode[data-mode="semantic"]::before { background: var(--neon); box-shadow: 0 0 8px var(--neon); }
 
 /* ---------- skills: logo rows sliding in opposite directions ---------- */
 #skills { padding-bottom: 0; }

@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=202611281800" />
+  <link rel="stylesheet" href="styles.css?v=202611281810" />
   <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -159,20 +159,20 @@
       <div class="section-head reveal">
         <span class="eyebrow">Ask my portfolio</span>
         <h2>Don't read. <em class="serif">Ask.</em></h2>
-        <p class="lede">A tiny RAG system running entirely in your browser: retrieval over a verified fact sheet about me, cosine scores shown, and it refuses anything it can't ground.</p>
+        <p class="lede">A RAG system running entirely in your browser: hybrid semantic + keyword search over everything on this site, answers quoted from what it retrieves, scores shown, and it refuses anything it can't ground.</p>
       </div>
 
       <div class="ask reveal">
         <div class="ask-chat" id="askLog">
-          <div class="msg bot"><span class="who mono">ankit.ai</span><p>Ask me about Ankit's experience, LLM evals, RAG, the ERP work, community, education — anything. I'll only answer from verified facts.</p></div>
+          <div class="msg bot"><span class="who mono">ankit.ai</span><p>Ask me anything about Ankit: his AI platforms, RAG and evals, DevLens, the ERP work, research, community, skills or the roles he wants. I only answer from what's on this site.</p></div>
         </div>
         <div class="ask-suggest mono" id="askSuggest">
-          <button>How do you prevent hallucinations?</button>
-          <button>What's your RAG experience?</button>
-          <button>Tell me about the ERP system</button>
-          <button>What community work have you done?</button>
-          <button>What integrations have you built?</button>
-          <button>What roles are you looking for?</button>
+          <button>How do you stop LLMs from hallucinating?</button>
+          <button>Has he worked with Kubernetes?</button>
+          <button>What did he build at Bhramaand?</button>
+          <button>How does DevLens keep secrets out of prompts?</button>
+          <button>Which papers has he published?</button>
+          <button>Is he open to DevRel roles?</button>
           <button>What's your favourite pizza?</button>
         </div>
         <form class="ask-input" id="askForm">
@@ -181,6 +181,7 @@
           <button class="btn primary small" type="submit">Run</button>
         </form>
         <aside class="ask-retrieval mono" id="askRetrieval"><div class="dim">retrieved chunks appear here · top_k=3</div></aside>
+        <div class="ask-mode mono" id="askMode" aria-live="polite"></div>
       </div>
     </section>
 
@@ -327,7 +328,8 @@
   </div>
   <div class="toast mono" id="toast"></div>
 
-  <script src="main.js?v=202611281800"></script>
-  <script src="walkthrough.js?v=202611281800"></script>
+  <script src="main.js?v=202611281810"></script>
+  <script src="walkthrough.js?v=202611281810"></script>
+  <script src="rag.js?v=202611281810"></script>
 </body>
 </html>
