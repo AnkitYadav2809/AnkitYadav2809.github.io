@@ -641,9 +641,9 @@ verdict = gate(checks, rubric)
 
   /* ---------------------------------------------------------------- projects */
   const PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>';
-  const WT_LEN = { devlens: 6, genai: 6, pptx: 5, leadz: 4, erp: 5, tasks: 4 };
+  // The "N slides" labels are filled in by walkthrough.js, which counts each deck's slides.
   function projects() {
-    $("#dlWalk").innerHTML = `<span class="wt-play">${PLAY}</span>Watch the walkthrough <span class="dim">${WT_LEN.devlens} slides</span>`;
+    $("#dlWalk").innerHTML = `<span class="wt-play">${PLAY}</span>Watch the walkthrough <span class="dim wt-slides"></span>`;
     $("#dlFeatures").innerHTML = DEVLENS_FEATURES.map(([ico, h, p]) => `
       <div class="feature"><span class="feature-ico">${glyph(ico)}</span><div><h4>${h}</h4><p>${p}</p></div></div>`).join("");
     $("#dlStack").innerHTML = DEVLENS_STACK.map(([n, s]) => `<span class="logo-chip">${icon(s)}${n}</span>`).join("");
@@ -655,7 +655,7 @@ verdict = gate(checks, rubric)
         <p class="card-text">${hl(p.text)}</p>
         <div class="stats">${p.stats.map(([v, l]) => `<div class="stat"><b>${v}</b><span>${l}</span></div>`).join("")}</div>
         <div class="logo-row">${p.stack.map(([n, s]) => `<span class="logo-chip">${icon(s)}${n}</span>`).join("")}</div>
-        <button class="wt-open" data-walkthrough="${p.wt}"><span class="wt-play">${PLAY}</span>Walkthrough <span class="dim">${WT_LEN[p.wt]} slides</span></button>
+        <button class="wt-open" data-walkthrough="${p.wt}"><span class="wt-play">${PLAY}</span>Walkthrough <span class="dim wt-slides"></span></button>
       </article>`).join("");
   }
 

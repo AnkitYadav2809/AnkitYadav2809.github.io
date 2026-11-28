@@ -366,6 +366,11 @@ meter.complete(reservation, draft.usage)`),
   const fromHash = () => { const m = location.hash.match(/^#walkthrough\/(\w+)/); if (m) open(m[1]); };
   addEventListener("hashchange", fromHash);
   fromHash();
+  // Label every walkthrough button with its deck's real slide count.
+  $$("[data-walkthrough]").forEach((b) => {
+    const d = WALKTHROUGHS[b.dataset.walkthrough], label = b.querySelector(".wt-slides");
+    if (d && label) label.textContent = `${d.slides.length} slides`;
+  });
   window.AY.walkthroughs = Object.keys(WALKTHROUGHS);
   window.AY.walkthroughData = WALKTHROUGHS; // rag.js answers from the slides too
 })();
