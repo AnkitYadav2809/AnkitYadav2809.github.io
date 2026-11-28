@@ -7,10 +7,10 @@
 
   /* ---------------------------------------------------------------- visuals */
   const V = {
-    // Real product screenshot in a browser frame.
-    shot: (src, caption) => `
+    // Real product screenshot in a window frame; `label` is the frame's title.
+    shot: (src, caption, label = "devlens · localhost") => `
       <figure class="wt-shot">
-        <div class="wt-chrome"><i></i><i></i><i></i><span>devlens · localhost</span></div>
+        <div class="wt-chrome"><i></i><i></i><i></i><span>${label}</span></div>
         <img src="${src}" alt="${caption || ""}" />
         ${caption ? `<figcaption>${hl(caption)}</figcaption>` : ""}
       </figure>`,
@@ -90,6 +90,7 @@
 
   /* ---------------------------------------------------------------- content */
   const W = "assets/walkthrough/devlens/";
+  const PX = "assets/walkthrough/pptx/";
   const WALKTHROUGHS = {
     devlens: {
       title: "DevLens", sub: "Privacy-first debugging assistant",
@@ -156,12 +157,18 @@ meter.complete(reservation, draft.usage)`),
         { kicker: "How it works", title: "A task pane inside PowerPoint, with a C# engine underneath.",
           points: ["A React task pane on WebView2 talks to the C# add-in through a bridge.", "Every change goes through PowerPoint's own object model, with undo."],
           visual: V.flow([["Ribbon + task pane", "react", "React on WebView2"], ["C# bridge", "csharp", "PowerPoint object model"], ["Scanners", "search", "fonts · colours · overflow · layouts"], ["Layout engine", "layers", "guides → safe frame → fit"], ["GPT-4", "openai", "text clean-up & fitting"], ["Writers", "check", "fix, with undo"]], [3, 4]) },
+        { wide: true, kicker: "The task pane", title: "One scan, one health score, then a fix for each problem.",
+          points: ["The deck gets a 0–100 health score, with every issue grouped by tool.", "Each issue can be stepped through slide by slide, or fixed all at once."],
+          visual: V.shot(PX + "pane-health.webp", "The real task pane on a sample deck: health 64, 102 text issues and 5 overflowing text boxes.", "PowerPoint · Pristine task pane") },
         { kicker: "Layout", title: "Layout that respects the template's own guides — 94% automatic.",
           points: ["It reads the slide's guide lines to work out the safe area.", "Then it finds columns and groups, resolves collisions, and tightens spacing and type until everything fits."],
           visual: V.align() },
         { kicker: "Audit", title: "Fonts, colours and overflow, found and fixed deck-wide.",
           points: ["2,000+ font inconsistencies caught; 100% compliance after remediation.", "Colours snap to the brand palette, and unused master layouts are cleaned out. (Example deck.)"],
           visual: V.fonts([["Brand Sans", 412, true], ["Georgia", 37, false], ["Calibri", 128, false], ["Brand Sans Bold", 96, true], ["Times New Roman", 22, false]]) },
+        { wide: true, kicker: "Audit, in the product", title: "Off-brand fonts, colours and layouts, one click from fixed.",
+          points: ["Missing and off-theme fonts map to the theme's own heading and body fonts.", "Colours are matched to the brand palette; unused masters and duplicate layouts are listed for removal."],
+          visual: V.shot(PX + "pane-audit.webp", "Font replacement, colour standardisation and master clean-up on the same sample deck.", "PowerPoint · Pristine task pane") },
         { kicker: "Results", title: "From an afternoon to a coffee break.",
           points: ["A 15-metric deck health score with 96% accuracy."],
           visual: V.stack(V.bars([["Minutes per deck", 240, 12, " min", true]]), V.stats([["94%", "shapes auto-aligned"], ["96%", "health-score accuracy"]]),
