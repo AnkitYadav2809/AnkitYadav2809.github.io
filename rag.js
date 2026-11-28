@@ -283,12 +283,14 @@
       const shown = [...new Set([...r.ranked.slice(0, TOP_K), ...(a.picked || []).map((x) => x.r)])];
       const label = (x) => shown.indexOf(x) + 1;
 
-      ret.innerHTML = `<div class="ret-title"><span>retrieved · top_k=${TOP_K}</span><span>${r.qv ? "semantic · keyword" : "keyword"}</span></div>` +
+      // The panel lists the top k plus any lower-ranked chunk the answer quotes, so say so.
+      const extra = shown.length - TOP_K;
+      ret.innerHTML = `<div class="ret-title"><span>retrieved · ${extra > 0 ? `top ${TOP_K} + ${extra} quoted` : `top_k=${TOP_K}`}</span><span>${r.qv ? "semantic · keyword" : "keyword"}</span></div>` +
         shown.map((x, i) => `
         <div class="chunk" style="animation-delay:${i * 90}ms">
           <div class="chunk-head"><b>[${i + 1}] ${esc(x.c.title)}</b><span>${x.s.toFixed(3)}</span></div>
           <p>${esc(x.c.text.length > 240 ? x.c.text.slice(0, 237) + "…" : x.c.text)}</p>
-          <div class="chunk-meta"><span>${x.c.source}</span><span>${x.sem != null ? `sem ${x.sem.toFixed(2)} · ` : ""}kw ${x.kw.toFixed(2)}</span></div>
+          <div class="chunk-meta"><span>${x.c.source}${i >= TOP_K ? ` · rank ${r.ranked.indexOf(x) + 1}, quoted` : ""}</span><span>${x.sem != null ? `sem ${x.sem.toFixed(2)} · ` : ""}kw ${x.kw.toFixed(2)}</span></div>
           <div class="sim"><i data-w="${Math.max(0, Math.min(100, x.s * 140))}"></i></div>
         </div>`).join("");
       requestAnimationFrame(() => $$(".sim i", ret).forEach((i) => (i.style.width = i.dataset.w + "%")));
