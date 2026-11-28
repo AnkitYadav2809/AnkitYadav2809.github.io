@@ -247,6 +247,8 @@
       keyword: `keyword search · ${CHUNKS.length} chunks (semantic model unavailable)`,
     };
     setMode = (m) => { if (mode) { mode.textContent = MODES[m]; mode.dataset.mode = m; } };
+    // After a question, the line reports that question's search instead of the mode.
+    const setStatus = (text) => { if (mode) mode.textContent = text; };
     setMode("idle");
     // Start the download on the first sign of interest, not for every visitor who scrolls past.
     ["pointerenter", "focusin", "touchstart"].forEach((ev) => box.addEventListener(ev, () => loadSemantic(), { once: true, passive: true }));
@@ -274,8 +276,10 @@
 
       // Give a model that's already downloading a moment to finish, so the answer uses it.
       if (loading && !extractor) await Promise.race([loading, sleep(6000)]);
+      const t0 = performance.now();
       const r = await retrieve(q);
       const a = await compose(q, r);
+      const ms = Math.round(performance.now() - t0);
       const shown = [...new Set([...r.ranked.slice(0, TOP_K), ...(a.picked || []).map((x) => x.r)])];
       const label = (x) => shown.indexOf(x) + 1;
 
@@ -307,6 +311,12 @@
         const n = new Set(a.picked.map((x) => x.r)).size;
         bot.insertAdjacentHTML("beforeend", `<div class="verdict"><span class="tag pass">PASS</span> ${a.picked.length} sentence${a.picked.length > 1 ? "s" : ""} quoted from ${n} source${n > 1 ? "s" : ""} · nothing generated</div>`);
       }
+      // This question's numbers: everything searched, how many chunks scored close to the best
+      // match, how many the answer quotes, and how long it took.
+      const relevant = a.grounded ? r.ranked.filter((x) => x.s >= a.top.s - 0.08).length : 0;
+      const used = a.grounded ? new Set(a.picked.map((x) => x.r)).size : 0;
+      setStatus(`${r.qv ? "hybrid search" : "keyword search"} · ${CHUNKS.length} searched · ${relevant} relevant · ` +
+        `${a.grounded ? `answer from ${used}` : "refused"} · ${ms} ms`);
       log.scrollTop = log.scrollHeight;
       busy = false;
     }
