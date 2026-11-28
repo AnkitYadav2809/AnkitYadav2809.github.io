@@ -24,7 +24,7 @@
   --serif: "Instrument Serif", Georgia, serif;
   --radius: 16px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --max: 1180px;
+  --max: 1280px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -331,7 +331,7 @@ h2 em { color: var(--neon); }
 
 /* ---------- ask ---------- */
 .ask { display: grid; grid-template-columns: 1.4fr 1fr; grid-template-rows: 1fr auto auto auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-2); overflow: hidden; }
-.ask-chat { grid-column: 1; padding: 24px; height: 380px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; scroll-behavior: smooth; }
+.ask-chat { grid-column: 1; padding: 24px; height: 440px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; scroll-behavior: smooth; }
 .msg { max-width: 92%; }
 .msg .who { font-size: 11px; color: var(--dim); display: block; margin-bottom: 4px; }
 .msg p { font-size: 15.5px; }
