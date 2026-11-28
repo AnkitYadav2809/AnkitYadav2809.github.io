@@ -47,8 +47,22 @@
   };
   const glyph = (name) => `<i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="${GLYPHS[name] || GLYPHS.spark}"/></svg></i>`;
   // A brand logo when we have it, else the fallback glyph.
+  // Brand colors (tuned for the dark background). Brands whose mark is black or white are left out
+  // and keep the current text color so they stay visible.
+  const BRAND = {
+    aws: "#FF9900", celery: "#37814A", cloudflare: "#F38020", csharp: "#9B6BF2", discord: "#5865F2",
+    django: "#44B78B", docker: "#2496ED", fastapi: "#009688", gemini: "#8E75B2", git: "#F05032",
+    gmail: "#EA4335", googlecloud: "#4285F4", googledrive: "#4285F4", html5: "#E34F26", huggingface: "#FFD21E",
+    javascript: "#F7DF1E", jira: "#2684FF", jwt: "#FB015B", kubernetes: "#326CE5", linkedin: "#0A66C2",
+    linux: "#FCC624", mongodb: "#47A248", mysql: "#4479A1", newrelic: "#1CE783", nginx: "#009639",
+    postgresql: "#4169E1", powerpoint: "#D35230", pydantic: "#E92063", python: "#3776AB", razorpay: "#3395FF",
+    react: "#61DAFB", redis: "#FF4438", slack: "#E01E5A", spacy: "#09A3D5", sqlalchemy: "#D71F00",
+    telegram: "#26A5E4", typescript: "#3178C6", vite: "#646CFF", whatsapp: "#25D366",
+  };
   const icon = (slug, fallback = "spark") =>
-    LOGOS.has(slug) ? `<i class="lg" aria-hidden="true" style="--src:url(assets/logos/${slug}.svg)"></i>` : glyph(GLYPHS[slug] ? slug : fallback);
+    LOGOS.has(slug)
+      ? `<i class="lg" aria-hidden="true" style="--src:url(assets/logos/${slug}.svg)${BRAND[slug] ? `;--brand:${BRAND[slug]}` : ""}"></i>`
+      : glyph(GLYPHS[slug] ? slug : fallback);
   // Numbers (80%, 4 h, 1,000+, 3.2 s, 42% → 89%) glow neon wherever they appear in copy.
   const hl = (s) => s.replace(/(?<![\w-])(\d[\d,.]*(?:\+|%|×)?(?:\s?(?:h|min|s|ms)\b)?)/g, '<span class="n">$1</span>');
 

@@ -119,7 +119,7 @@ claude mcp add --transport http devlens \\
       ],
     },
     genai: {
-      title: "Governed GenAI Content Platform", sub: "EZ Works · production",
+      title: "Governed GenAI Content Platform", sub: "EZ Works · production", ms: 14000,
       slides: [
         { kicker: "The problem", title: "PR content in two languages, where a leaked name or an invented fact is a real problem.",
           points: ["Press releases, announcements and posts in English and Arabic, for many organisations at once.", "Every draft has to sound like the client — and never state something that isn't true."],
@@ -275,14 +275,15 @@ meter.complete(reservation, draft.usage)`),
   // Each slide's segment fills while it plays; the deck advances when it's full.
   function restart() {
     clearTimeout(timer);
-    left = SLIDE_MS;
+    const ms = deck.ms || SLIDE_MS; // a deck can set its own pace
+    left = ms;
     const seg = $$(".wt-seg", progress)[idx];
-    seg.style.setProperty("--ms", `${SLIDE_MS}ms`);
+    seg.style.setProperty("--ms", `${ms}ms`);
     void seg.offsetWidth;
     seg.classList.add("run");
     if (reduced) return;
     started = Date.now();
-    if (!paused) timer = setTimeout(next, SLIDE_MS);
+    if (!paused) timer = setTimeout(next, ms);
   }
   function pause(on) {
     if (paused === on || reduced) return;
